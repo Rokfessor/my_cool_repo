@@ -20,6 +20,11 @@ public class KARTA<K,V> implements IMap<K,V>{
 
     @Override
     public V get(K key) {
+        for(int i = 0;i<keys.size();i++ ){
+            if(keys.get(i)==key){
+                return values.get(i);
+            }
+        }
         return null;
     }
 
