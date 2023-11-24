@@ -6,8 +6,8 @@ public class KARTA<K,V> implements IMap<K,V>{
 
 
 
-    private ArrayList<K> keys;
-    private ArrayList<V> values;
+    private ArrayList<K> keys = new ArrayList<>();
+    private ArrayList<V> values = new ArrayList<>();
 
     public KARTA(){
 
