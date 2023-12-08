@@ -1,30 +1,20 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Set;
 
 public class KARTA<K,V> implements IMap<K,V>{
 
-
-
-    private ArrayList<K> keys = new ArrayList<>();
-    private ArrayList<V> values = new ArrayList<>();
+    ArrayList<maps> maps = new ArrayList<>();
 
     public KARTA(){
 
     }
     @Override
     public void add(K key, V value) {
-        keys.add(key);
-        values.add(value);
+        maps.add(new maps<K,V>(key, value));
     }
 
     @Override
     public V get(K key) {
-        for(int i = 0;i<keys.size();i++ ){
-            if(keys.get(i)==key){
-                return values.get(i);
-            }
-        }
         return null;
     }
 
