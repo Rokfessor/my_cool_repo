@@ -70,6 +70,6 @@ public class ChechnyaMap<K, V> implements IMap<K, V> {
 
     @Override
     public int getSize() {
-        return 0;
+        return size;
     }
 }
