@@ -40,10 +40,12 @@ public class ChechnyaMap<K, V> implements IMap<K, V> {
 
     @Override
     public boolean remove(K key) {
-        for (myMap map : elem) {
-            if (map.getKey() == key) {
-                elem.remove(elem.indexOf(map));
-                return true;
+        if (elem.size() > 0) {
+            for (myMap map : elem) {
+                if (map.getKey() == key) {
+                    elem.remove(elem.indexOf(map));
+                    return true;
+                }
             }
         }
         return false;
@@ -51,6 +53,18 @@ public class ChechnyaMap<K, V> implements IMap<K, V> {
 
     @Override
     public boolean removeAll(V value) {
+        if (!elem.isEmpty()) {
+            ArrayList<Integer> indexes = new ArrayList<>();
+            for (myMap map : elem) {
+                if (map.getValue() == value) {
+                    indexes.add(elem.indexOf(map));
+                }
+            }
+            for (int index = indexes.size() - 1; index > -1; index--) {
+                elem.remove((int) indexes.get(index));
+            }
+            return true;
+        }
         return false;
     }
 
