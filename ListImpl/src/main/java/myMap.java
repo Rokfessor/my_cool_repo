@@ -1,8 +1,8 @@
-public class Map<K, V> {
+public class myMap<K, V> {
     private K key;
     private V value;
 
-    public Map(K key, V value) {
+    public myMap(K key, V value) {
         this.key = key;
         this.value = value;
     }

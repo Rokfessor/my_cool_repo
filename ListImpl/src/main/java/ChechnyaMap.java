@@ -1,19 +1,31 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.*;
 
 public class ChechnyaMap<K, V> implements IMap<K, V> {
 
     private int size;
 
-    private ArrayList<Map> elem = new ArrayList<>();
+    private ArrayList<myMap> elem = new ArrayList<>();
 
 
 
     @Override
     public void add(K key, V value) {
-        elem.add(new Map<K, V>(key, value));
+        for (myMap map : elem) {
+            if (map.getKey() == key) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Такой ключ уже существует. Желаете ли вы перезаписать его? (Y/N)");
+                String answer = scanner.nextLine();
+
+                if (answer.equalsIgnoreCase("Y")) {
+                    elem.remove(elem.indexOf(map));
+                    break;
+                }
+                else if (answer.equalsIgnoreCase("N")) {
+                    break;
+                }
+            }
+        }
+        elem.add(new myMap<K, V>(key, value));
     }
 
     @Override
