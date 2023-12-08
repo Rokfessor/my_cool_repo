@@ -12,17 +12,8 @@ public class ChechnyaMap<K, V> implements IMap<K, V> {
     public void add(K key, V value) {
         for (myMap map : elem) {
             if (map.getKey() == key) {
-                Scanner scanner = new Scanner(System.in);
-                System.out.println("Такой ключ уже существует. Желаете ли вы перезаписать его? (Y/N)");
-                String answer = scanner.nextLine();
-
-                if (answer.equalsIgnoreCase("Y")) {
-                    elem.remove(elem.indexOf(map));
-                    break;
-                }
-                else if (answer.equalsIgnoreCase("N")) {
-                    break;
-                }
+                elem.remove(elem.indexOf(map));
+                break;
             }
         }
         elem.add(new myMap<K, V>(key, value));
