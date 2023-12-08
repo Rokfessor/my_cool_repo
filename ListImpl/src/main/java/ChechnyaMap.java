@@ -3,9 +3,7 @@ import java.util.*;
 public class ChechnyaMap<K, V> implements IMap<K, V> {
 
     private int size;
-
-    private ArrayList<myMap> elem = new ArrayList<>();
-
+    private final ArrayList<myMap> elem = new ArrayList<>();
 
 
     @Override
@@ -13,10 +11,12 @@ public class ChechnyaMap<K, V> implements IMap<K, V> {
         for (myMap map : elem) {
             if (map.getKey() == key) {
                 elem.remove(elem.indexOf(map));
+                size--;
                 break;
             }
         }
         elem.add(new myMap<K, V>(key, value));
+        size++;
     }
 
     @Override
@@ -40,10 +40,11 @@ public class ChechnyaMap<K, V> implements IMap<K, V> {
 
     @Override
     public boolean remove(K key) {
-        if (elem.size() > 0) {
+        if (!elem.isEmpty()) {
             for (myMap map : elem) {
                 if (map.getKey() == key) {
                     elem.remove(elem.indexOf(map));
+                    size--;
                     return true;
                 }
             }
@@ -62,6 +63,7 @@ public class ChechnyaMap<K, V> implements IMap<K, V> {
             }
             for (int index = indexes.size() - 1; index > -1; index--) {
                 elem.remove((int) indexes.get(index));
+                size--;
             }
             return true;
         }
