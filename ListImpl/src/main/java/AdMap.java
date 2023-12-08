@@ -22,11 +22,18 @@ public class AdMap<K, V> implements IMap<K, V> {
                 listOfElements.remove(indexForRemove);
             }
         }
+        indexForRemove = -1;
         listOfElements.add(new MapObj<K, V>(key, value));
     }
 
     @Override
     public V get(K key) {
+        for (int i = 0; i < listOfElements.size(); i++) {
+            slider = listOfElements.get(i);
+            if (slider.getKey() == key) {
+                return slider.getValue();
+            }
+        }
         return null;
     }
 
