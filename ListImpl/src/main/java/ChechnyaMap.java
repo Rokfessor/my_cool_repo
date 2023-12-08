@@ -21,6 +21,11 @@ public class ChechnyaMap<K, V> implements IMap<K, V> {
 
     @Override
     public V get(K key) {
+        for (myMap map : elem) {
+            if (map.getKey() == key) {
+                return (V) map.getValue();
+            }
+        }
         return null;
     }
 
