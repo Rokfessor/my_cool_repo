@@ -40,6 +40,12 @@ public class ChechnyaMap<K, V> implements IMap<K, V> {
 
     @Override
     public boolean remove(K key) {
+        for (myMap map : elem) {
+            if (map.getKey() == key) {
+                elem.remove(elem.indexOf(map));
+                return true;
+            }
+        }
         return false;
     }
 
