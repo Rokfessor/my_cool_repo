@@ -1,18 +1,19 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 public class ChechnyaMap<K, V> implements IMap<K, V> {
 
-    int size;
+    private int size;
 
-    ArrayList<K> keyArray = new ArrayList<>();
-    ArrayList<V> valueArray = new ArrayList<>();
+    private ArrayList<Map> elem = new ArrayList<>();
+
+
 
     @Override
     public void add(K key, V value) {
-        keyArray.add(key);
-        valueArray.add(value);
-        ++size;
+        elem.add(new Map<K, V>(key, value));
     }
 
     @Override
@@ -37,6 +38,6 @@ public class ChechnyaMap<K, V> implements IMap<K, V> {
 
     @Override
     public int getSize() {
-        return size;
+        return 0;
     }
 }
