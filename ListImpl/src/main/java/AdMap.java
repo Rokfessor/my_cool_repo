@@ -44,10 +44,23 @@ public class AdMap<K, V> implements IMap<K, V> {
     public Set<K> getAll() {
         return setForGetAll;
     }
-    
+
 
     @Override
     public boolean remove(K key) {
+        if (listOfElements.size() > 0) {
+            for (int i = 0; i < listOfElements.size(); i++) {
+                if (listOfElements.get(i).getKey() == key) {
+                    indexForRemove = i;
+                }
+            }
+            if (indexForRemove >= 0) {
+                listOfElements.remove(indexForRemove);
+                setForGetAll.remove(key);
+                return true;
+            }
+        }
+        indexForRemove = -1;
         return false;
     }
 
