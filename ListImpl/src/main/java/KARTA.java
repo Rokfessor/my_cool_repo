@@ -3,14 +3,23 @@ import java.util.Set;
 
 public class KARTA<K,V> implements IMap<K,V>{
 
-    ArrayList<maps> maps = new ArrayList<>();
-
+    ArrayList<Element> mips = new ArrayList<>();
     public KARTA(){
 
     }
     @Override
     public void add(K key, V value) {
-        maps.add(new maps<K,V>(key, value));
+        boolean flag = true;
+        for(Element i: mips){
+            if(i.getKey() == key){
+                i.setValue(value);
+                flag = false;
+                break;
+            }
+        }
+        if(flag){
+            mips.add(new Element<K,V>(key, value));
+        }
     }
 
     @Override
@@ -38,3 +47,9 @@ public class KARTA<K,V> implements IMap<K,V>{
         return 0;
     }
 }
+/* mips.size();
+* Iterator<String> iterator = countryHashSet.iterator();
+    while (iterator.hasNext()) {
+        mInfoTextView.setText(mInfoTextView.getText() + iterator.next()
+                + ", ");
+    }*/
