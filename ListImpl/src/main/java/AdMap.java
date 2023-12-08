@@ -3,6 +3,7 @@ import java.util.Set;
 
 public class AdMap<K,V> implements IMap<K,V>{
     private ArrayList<MapObj> listOfElements = new ArrayList<>();
+    private MapObj<K, V> slider;
     public AdMap(){
 
     }
@@ -12,6 +13,12 @@ public class AdMap<K,V> implements IMap<K,V>{
     }
     @Override
     public V get(K key) {
+        for(int i = 0; i < listOfElements.size(); i++){
+            slider = listOfElements.get(i);
+            if(slider.getKey() == key){
+                return slider.getValue();
+            }
+        }
         return null;
     }
     @Override
