@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 public class AdMap<K, V> implements IMap<K, V> {
     private ArrayList<MapObj> listOfElements = new ArrayList<>();
     private MapObj<K, V> slider;
     private int indexForRemove;
+    Set<K> setForGetAll = new HashSet<>();
 
     public AdMap() {
 
@@ -24,6 +26,7 @@ public class AdMap<K, V> implements IMap<K, V> {
         }
         indexForRemove = -1;
         listOfElements.add(new MapObj<K, V>(key, value));
+        setForGetAll.add(key);
     }
 
     @Override
@@ -39,8 +42,9 @@ public class AdMap<K, V> implements IMap<K, V> {
 
     @Override
     public Set<K> getAll() {
-        return null;
+        return setForGetAll;
     }
+    
 
     @Override
     public boolean remove(K key) {
