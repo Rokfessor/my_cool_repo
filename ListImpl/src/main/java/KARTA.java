@@ -46,6 +46,7 @@ public class KARTA<K,V> implements IMap<K,V>{
             Element nextElement = elementIterator.next();
             if(nextElement.getKey() == key){
                 elementIterator.remove();
+                return true;
             }
         }
         return false;
