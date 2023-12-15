@@ -35,8 +35,12 @@ public class KARTA<K,V> implements IMap<K,V>{
     }
 
     @Override
-    public Set<K> getAll() {
-        return null;
+    public Set<K> getAll() {//Мы так поняли :)
+        Set<K> keys = new HashSet<>();
+        for(Element element : boxOfElements){
+            keys.add((K) element.getKey());
+        }
+        return keys;
     }
 
     @Override
@@ -71,8 +75,4 @@ public class KARTA<K,V> implements IMap<K,V>{
         return boxOfElements.size();
     }
 }
-/*//Мы так поняли :)
-        Set<K> keys = new HashSet<>();
-        for(Element element : boxOfElements){
-            keys.add((K) element.getKey());
-        }*/
+/**/
