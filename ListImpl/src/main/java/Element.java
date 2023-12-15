@@ -12,4 +12,5 @@ public class Element<K, V> {
     public void setValue(V value){
         this.value = value;
     }
+    public V getValue(){ return value;}
 }

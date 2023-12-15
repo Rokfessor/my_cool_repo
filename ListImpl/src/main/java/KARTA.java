@@ -1,31 +1,29 @@
 import java.util.ArrayList;
 import java.util.Set;
 
-public class KARTA<K,V> implements IMap<K,V>{
+public class KARTA2<K,V> implements IMap<K,V>{
 
-    ArrayList<Element> mips = new ArrayList<>();
-    public KARTA(){
+    ArrayList<Element> boxOfElements = new ArrayList<>();
+    public KARTA2(){
 
     }
     @Override
     public void add(K key, V value) {
         boolean flag = true;
-        for(Element i: mips){
-            if(i.getKey() == key){
-                i.setValue(value);
+        for(Element element: boxOfElements){
+            if(element.getKey() == key){
+                element.setValue(value);
                 flag = false;
                 break;
             }
         }
         if(flag){
-            mips.add(new Element<K,V>(key, value));
+            boxOfElements.add(new Element<K,V>(key, value));
         }
     }
 
     @Override
-    public V get(K key) {
-        return null;
-    }
+    public V get(K key) {return null;}
 
     @Override
     public Set<K> getAll() {
