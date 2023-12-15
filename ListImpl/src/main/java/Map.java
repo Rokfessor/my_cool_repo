@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -6,10 +7,15 @@ public class Map<K,V> implements IMap<K,V>{
     public ArrayList<Obj<K, V>> list = new ArrayList<>();
     @Override
     public void add(K key, V value){
-        Obj<K, V> obj = new Obj<>(key, value);
-        list.add(obj);
+        K t_key = null;
+        for (int elem = 0; elem < list.size(); elem++){
+            if (key == list.get(elem).get_key()) t_key =list.get(elem).get_key();
+        }
 
-
+        if (t_key == null) {
+            Obj<K, V> obj = new Obj<>(key, value);
+            list.add(obj);
+        }
     }
 
     @Override
@@ -24,7 +30,12 @@ public class Map<K,V> implements IMap<K,V>{
 
     @Override
     public Set<K> getAll() {
-        return null;
+        Set<K> keys = new HashSet<K>();
+
+        for (int elem = 0; elem < list.size(); elem++){
+            keys.add(list.get(elem).get_key());
+        }
+        return keys;
     }
 
     @Override
