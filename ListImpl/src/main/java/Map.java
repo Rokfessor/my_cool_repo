@@ -7,6 +7,7 @@ public class Map<K,V> implements IMap<K,V>{
     @Override
     public void add(K key, V value){
         K t_key = null;
+
         for (Obj<K, V> kvObj : list) {
             if (key == kvObj.get_key()) t_key = kvObj.get_key();
         }
@@ -19,12 +20,10 @@ public class Map<K,V> implements IMap<K,V>{
 
     @Override
     public V get(K key) {
-        V value = null;
         for (Obj<K, V> kvObj : list) {
-            if (key == kvObj.get_key()) value = kvObj.get_value();
-
+            if (key == kvObj.get_key()) return kvObj.get_value();
         }
-        return value;
+        return null;
     }
 
     @Override
