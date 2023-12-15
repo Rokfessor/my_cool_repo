@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 public class Map<K,V> implements IMap<K,V>{
@@ -8,8 +7,8 @@ public class Map<K,V> implements IMap<K,V>{
     @Override
     public void add(K key, V value){
         K t_key = null;
-        for (int elem = 0; elem < list.size(); elem++){
-            if (key == list.get(elem).get_key()) t_key =list.get(elem).get_key();
+        for (Obj<K, V> kvObj : list) {
+            if (key == kvObj.get_key()) t_key = kvObj.get_key();
         }
 
         if (t_key == null) {
@@ -21,8 +20,8 @@ public class Map<K,V> implements IMap<K,V>{
     @Override
     public V get(K key) {
         V value = null;
-        for (int elem = 0; elem < list.size(); elem++){
-            if (key == list.get(elem).get_key()) value =list.get(elem).get_value();
+        for (Obj<K, V> kvObj : list) {
+            if (key == kvObj.get_key()) value = kvObj.get_value();
 
         }
         return value;
@@ -30,17 +29,16 @@ public class Map<K,V> implements IMap<K,V>{
 
     @Override
     public Set<K> getAll() {
-        Set<K> keys = new HashSet<K>();
+        Set<K> keys = new HashSet<>();
 
-        for (int elem = 0; elem < list.size(); elem++){
-            keys.add(list.get(elem).get_key());
+        for (Obj<K, V> kvObj : list) {
+            keys.add(kvObj.get_key());
         }
         return keys;
     }
 
     @Override
     public boolean remove(K key) {
-        K t_key = null;
         for (int elem = 0; elem < list.size(); elem++){
             if (key == list.get(elem).get_key()){
                 list.remove(elem);
@@ -51,7 +49,14 @@ public class Map<K,V> implements IMap<K,V>{
 
     @Override
     public boolean removeAll(V value) {
-        return false;
+        boolean remove_bool = false;
+        for (int elem = 0; elem < list.size(); elem++){
+            if (value == list.get(elem).get_value()){
+                list.remove(elem);
+                remove_bool = true;
+            }
+        }
+        return remove_bool;
     }
 
     @Override
