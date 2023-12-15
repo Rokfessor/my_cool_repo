@@ -42,7 +42,7 @@ public class AdMap<K, V> implements IMap<K, V> {
             for (int i = 0; i < listOfElements.size(); i++) {
                 if (listOfElements.get(i).getKey() == key) {
                     listOfElements.remove(i);
-                    break;
+                    return true;
                 }
             }
         }
@@ -51,15 +51,17 @@ public class AdMap<K, V> implements IMap<K, V> {
 
     @Override
     public boolean removeAll(V value) {
+        boolean flag = false;
         if (listOfElements.size() > 0) {
             for (int i = 0; i < listOfElements.size(); i++) {
                 if (listOfElements.get(i).getValue() == value) {
+                    flag = true;
                     listOfElements.remove(i);
                     i--;
                 }
             }
         }
-        return false;
+        return flag;
     }
 
     @Override
