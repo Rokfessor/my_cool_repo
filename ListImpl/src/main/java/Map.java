@@ -40,6 +40,12 @@ public class Map<K,V> implements IMap<K,V>{
 
     @Override
     public boolean remove(K key) {
+        K t_key = null;
+        for (int elem = 0; elem < list.size(); elem++){
+            if (key == list.get(elem).get_key()){
+                list.remove(elem);
+                return true;}
+        }
         return false;
     }
 
