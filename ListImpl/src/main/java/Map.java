@@ -14,7 +14,12 @@ public class Map<K,V> implements IMap<K,V>{
 
     @Override
     public V get(K key) {
-        return null;
+        V value = null;
+        for (int elem = 0; elem < list.size(); elem++){
+            if (key == list.get(elem).get_key()) value =list.get(elem).get_value();
+
+        }
+        return value;
     }
 
     @Override
