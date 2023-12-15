@@ -5,7 +5,6 @@ import java.util.Set;
 public class AdMap<K, V> implements IMap<K, V> {
     private ArrayList<MapObj> listOfElements = new ArrayList<>();
     Set<K> setForGetAll = new HashSet<>();
-    ArrayList<Integer> listOfIndexForRemoveAll = new ArrayList<>();
 
     public AdMap() {
 
@@ -48,21 +47,15 @@ public class AdMap<K, V> implements IMap<K, V> {
         }
         return false;
     }
+
     @Override
     public boolean removeAll(V value) {
         if (listOfElements.size() > 0) {
             for (int i = 0; i < listOfElements.size(); i++) {
                 if (listOfElements.get(i).getValue() == value) {
-                    listOfIndexForRemoveAll.add(i);
-                    setForGetAll.remove(listOfElements.get(i).getKey());
+                    listOfElements.remove(i);
+                    i--;
                 }
-            }
-            if (listOfIndexForRemoveAll.size() > 0) {
-                for (int j = 0; j < listOfIndexForRemoveAll.size(); j++) {
-                    listOfElements.remove(listOfIndexForRemoveAll.get(j));
-                }
-                listOfIndexForRemoveAll.clear();
-                return true;
             }
         }
         return false;
