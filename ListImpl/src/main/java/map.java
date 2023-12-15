@@ -20,7 +20,13 @@ public class map<K, V> implements IMap<K, V> {
 
     @Override
     public V get(K key) {
-        return null;
+        ArrayList<V> values = new ArrayList<>();
+        for (KeyValue i: kv) {
+            if (i.getKey().equals(key)) {
+                values.add((V) i.getValue());
+            }
+        }
+        return (V) values;
     }
 
     @Override
