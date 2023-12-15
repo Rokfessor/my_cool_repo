@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -53,7 +54,15 @@ public class KARTA<K,V> implements IMap<K,V>{
     }
 
     @Override
-    public boolean removeAll(V value) {
+    public boolean removeAll(V value) { //Мы так поняли :)
+        Iterator<Element> elementIterator = boxOfElements.iterator();
+        while (elementIterator.hasNext()){
+            Element nextElement = elementIterator.next();
+            if(nextElement.getValue() == value){
+                elementIterator.remove();
+                return true;
+            }
+        }
         return false;
     }
 
@@ -62,3 +71,8 @@ public class KARTA<K,V> implements IMap<K,V>{
         return boxOfElements.size();
     }
 }
+/*//Мы так поняли :)
+        Set<K> keys = new HashSet<>();
+        for(Element element : boxOfElements){
+            keys.add((K) element.getKey());
+        }*/
