@@ -4,7 +4,6 @@ import java.util.Set;
 
 public class AdMap<K, V> implements IMap<K, V> {
     private ArrayList<MapObj> listOfElements = new ArrayList<>();
-    Set<K> setForGetAll = new HashSet<>();
 
     public AdMap() {
 
@@ -16,7 +15,6 @@ public class AdMap<K, V> implements IMap<K, V> {
             remove(key);
         }
         listOfElements.add(new MapObj<K, V>(key, value));
-        setForGetAll.add(key);
     }
 
     @Override
@@ -31,9 +29,12 @@ public class AdMap<K, V> implements IMap<K, V> {
 
     @Override
     public Set<K> getAll() {
+        Set<K> setForGetAll = new HashSet<>();
+        for (int i = 0; i < listOfElements.size(); i++) {
+            setForGetAll.add((K) listOfElements.get(i).getKey());
+        }
         return setForGetAll;
     }
-
 
     @Override
     public boolean remove(K key) {
