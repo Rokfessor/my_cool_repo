@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 public class map<K, V> implements IMap<K, V> {
@@ -31,7 +32,11 @@ public class map<K, V> implements IMap<K, V> {
 
     @Override
     public Set<K> getAll() {
-        return null;
+        Set<K> keys = new HashSet<>();
+        for (KeyValue i: kv) {
+            keys.add((K) i.getKey());
+        }
+        return keys;
     }
 
     @Override
