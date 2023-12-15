@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.Set;
 
-public class KARTA2<K,V> implements IMap<K,V>{
+public class KARTA<K,V> implements IMap<K,V>{
 
     ArrayList<Element> boxOfElements = new ArrayList<>();
-    public KARTA2(){
+    public KARTA(){
 
     }
     @Override
@@ -23,7 +23,14 @@ public class KARTA2<K,V> implements IMap<K,V>{
     }
 
     @Override
-    public V get(K key) {return null;}
+    public V get(K key) {
+        for(Element element: boxOfElements){
+            if(element.getKey() == key){
+                return (V) element.getValue();
+            }
+        }
+        return null;
+    }
 
     @Override
     public Set<K> getAll() {
