@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Set;
 
 public class KARTA<K,V> implements IMap<K,V>{
@@ -38,7 +39,15 @@ public class KARTA<K,V> implements IMap<K,V>{
     }
 
     @Override
-    public boolean remove(K key) {
+    public boolean remove(K key)
+    {
+        Iterator<Element> elementIterator = boxOfElements.iterator();
+        while (elementIterator.hasNext()){
+            Element nextElement = elementIterator.next();
+            if(nextElement.getKey() == key){
+                elementIterator.remove();
+            }
+        }
         return false;
     }
 
@@ -52,9 +61,3 @@ public class KARTA<K,V> implements IMap<K,V>{
         return boxOfElements.size();
     }
 }
-/* mips.size();
-* Iterator<String> iterator = countryHashSet.iterator();
-    while (iterator.hasNext()) {
-        mInfoTextView.setText(mInfoTextView.getText() + iterator.next()
-                + ", ");
-    }*/
