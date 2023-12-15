@@ -56,7 +56,16 @@ public class map<K, V> implements IMap<K, V> {
 
     @Override
     public boolean removeAll(V value) {
-        return false;
+        Iterator<KeyValue> iterator = kv.iterator();
+        boolean removed = false;
+        while (iterator.hasNext()) {
+            KeyValue kv = iterator.next();
+            if (kv.getValue() == value) {
+                iterator.remove();
+                removed = true;
+            }
+        }
+        return removed;
     }
 
     @Override
