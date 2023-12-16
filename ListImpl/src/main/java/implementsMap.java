@@ -1,6 +1,5 @@
 package my_cool_repo.ListImpl.src.main.java;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
