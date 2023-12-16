@@ -5,5 +5,13 @@ public class testMap {
         implementsMap map = new implementsMap();
         map.add("asd", 2);
         System.out.println(map.get("asd"));
+
+        System.out.println(map.remove("asd"));
+
+        System.out.println(map.get("asd"));
+
+
+
+
     }
 }

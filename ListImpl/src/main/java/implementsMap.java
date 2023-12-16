@@ -47,7 +47,19 @@ public class implementsMap<K, V> implements IMap<K, V> {
 
     @Override
     public boolean remove(K key) {
-        return false;
+        Set<basePair> map1 = new HashSet<>();
+
+        for (basePair elementOfMap : map) {
+            if (!elementOfMap.key.equals(key)) {
+                map1.add(elementOfMap);
+            }
+
+        }
+        if (map1.size() == map.size()) {
+            return false;
+        }
+        map=map1;
+        return true;
     }
 
     @Override
