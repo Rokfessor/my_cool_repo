@@ -1,5 +1,6 @@
 package my_cool_repo.ListImpl.src.main.java;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 class basePair<K,V>{
     K key;
@@ -14,11 +15,6 @@ class basePair<K,V>{
 
 public class implementsMap<K, V> implements IMap<K, V> {
     Set<basePair> map = new HashSet<>();
-    public implementsMap(){
-
-
-
-    }
 
 
     @Override
@@ -32,6 +28,7 @@ public class implementsMap<K, V> implements IMap<K, V> {
     public V get(K key) {
         for(basePair elementOfMap: map){
             if(elementOfMap.key.equals(key)){
+                return (V) elementOfMap.value;
             }
         }
         return null;
