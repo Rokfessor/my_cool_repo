@@ -58,16 +58,18 @@ public class KARTA<K,V> implements IMap<K,V>{
     }
 
     @Override
-    public boolean removeAll(V value) { //Мы так поняли :)
+    public boolean removeAll(V value) {
         Iterator<Element> elementIterator = boxOfElements.iterator();
         while (elementIterator.hasNext()){
             Element nextElement = elementIterator.next();
             if(nextElement.getValue() == value){
                 elementIterator.remove();
-                return true;
             }
         }
-        return false;
+        for (Element element: boxOfElements){
+            if(value == element.getValue())return false;
+        }
+        return true;
     }
 
     @Override
