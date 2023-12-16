@@ -32,7 +32,11 @@ public class implementsMap<K, V> implements IMap<K, V> {
 
     @Override
     public V get(K key) {
-
+        for(basePair elementOfMap: map){
+            if(elementOfMap.key.equals(key)){
+                return (V)  elementOfMap.value;
+            }
+        }
         return null;
     }
 
