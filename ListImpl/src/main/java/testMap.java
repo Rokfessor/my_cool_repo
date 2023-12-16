@@ -8,7 +8,7 @@ public class testMap {
 
 
 
-        System.out.println(map.getAll());
+        System.out.println(map.getSize());
 
 
 
