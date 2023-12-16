@@ -6,13 +6,5 @@ public class testMap {
         map.add("asd", 2);
         System.out.println(map.get("asd"));
 
-
-
-
-
-
-
-
-
     }
 }
