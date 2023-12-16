@@ -32,7 +32,6 @@ public class implementsMap<K, V> implements IMap<K, V> {
     public V get(K key) {
         for(basePair elementOfMap: map){
             if(elementOfMap.key.equals(key)){
-                System.out.println();
             }
         }
         return null;
@@ -40,9 +39,12 @@ public class implementsMap<K, V> implements IMap<K, V> {
 
     @Override
     public Set<K> getAll() {
-        return null;
+        Set map1 = new HashSet<>();
+        for (basePair elementOfMap : map) {
+            map1.add(elementOfMap.value);
+        }
+        return map1;
     }
-
     @Override
     public boolean remove(K key) {
         Set<basePair> map1 = new HashSet<>();
