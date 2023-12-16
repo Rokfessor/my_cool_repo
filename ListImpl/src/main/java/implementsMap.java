@@ -8,9 +8,7 @@ class basePair<K,V>{
         this.key=key;
         this.value=value;
     }
-    public String toString(){
-        return "key: "+key+"value: "+value;
-    }
+
 
 }
 
@@ -34,7 +32,7 @@ public class implementsMap<K, V> implements IMap<K, V> {
     public V get(K key) {
         for(basePair elementOfMap: map){
             if(elementOfMap.key.equals(key)){
-                return (V)  elementOfMap.value;
+                System.out.println();
             }
         }
         return null;
@@ -64,6 +62,11 @@ public class implementsMap<K, V> implements IMap<K, V> {
 
     @Override
     public boolean removeAll(V value) {
+        if(map.isEmpty()){
+            return false;
+        }
+        Set<basePair> map1 = new HashSet<>();
+        map=map1;
         return false;
     }
 

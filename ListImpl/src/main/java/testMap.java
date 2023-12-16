@@ -6,9 +6,9 @@ public class testMap {
         map.add("asd", 2);
         System.out.println(map.get("asd"));
 
-        System.out.println(map.remove("asd"));
 
-        System.out.println(map.get("asd"));
+
+        System.out.println(map);
 
 
 
